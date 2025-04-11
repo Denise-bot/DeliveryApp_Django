@@ -1,0 +1,74 @@
+{% load static %}
+<!doctype html class="pagina">
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="{% static 'produto/css/css.css' %}" >
+    <script src="{% static 'pedido/js/js.js' %}"></script>
+    {% block 'head'%}
+
+    {% endblock %}
+    <title>Delivery</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="/">Delivery</a>
+      
+          <!-- Botão para menu colapsável no mobile -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <!-- Itens da navbar -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Categorias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="bi bi-cart"></i> Carrinho
+                </a>
+              </li>
+            </ul>
+          
+            <ul class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Olá, {{ user.username }}</a>
+                </li>
+                <li class="nav-item">
+                    <form action="{% url 'logout' %}" method="post" class="form-inline" id="logout-form">
+                      {% csrf_token %}
+                      <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit(); return false;">
+                        Sair
+                      </a>
+                    </form>
+                  </li>
+                  
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'cadastro' %}">Cadastro</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>          
+
+      {% block 'conteudo' %}
+      {% endblock %}
+
+      <br><br><br>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

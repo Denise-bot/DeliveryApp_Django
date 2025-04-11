@@ -1,0 +1,304 @@
+
+.corBorda{
+    background-color: #86a6c6;
+    font-size: 30px;
+    color: white;
+}
+
+.observacoes{
+
+    border: 1px solid #ffffff;
+    width: 200px;
+
+}
+
+.tituloProduto{
+
+font-size: 60px;
+}
+
+.subTituloProduto{
+
+    font-size: 40px;
+    color: white;
+}
+
+.bordaBottom{
+
+border-bottom: 1px solid gray;
+padding-bottom: 20px;
+
+}
+
+.botao{
+
+    background-color: #4e9ff0;
+    color: white;
+    padding: 8px;
+    border-radius: 15px;
+    transition: 0.2s;
+}
+
+body{
+    background-color: #000000;
+}
+
+.titulo{
+
+    color: #737577;
+
+}
+
+.botao:hover{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid #cbece6;
+}
+.col-sm{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    max-width: 350px;
+}
+.container{
+    width: 1500px;
+}
+
+.cont{
+    
+    overflow:auto;
+    width: 350px;
+    text-align: center;
+
+  }
+
+.cont img {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    max-width: 100%;
+    -moz-transition: all 2s;
+    -webkit-transition: all 2s;
+    transition: all 2s;
+  }
+
+.cont:hover img {
+    -moz-transform: scale(1.8);
+    -webkit-transform: scale(1.8);
+    transform: scale(1.8);
+  }
+
+input[type=checkbox] {
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #95e1a9;
+    color: white;
+        
+    }
+    
+input[type=checkbox]:before {
+    content: "";
+    border-radius: 15px;
+    border: 1px solid #F2A1A1;
+    display: block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: #95e1a9;
+    }
+    
+input[type=checkbox]:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: 1px solid #95e1a9;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 5px;
+    left: 9px;
+}
+
+.tamanhoImg{
+    align-items: center;
+    max-width: 350px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    margin: center;
+}
+
+@media (max-width: 1200px)
+{
+ 
+    .tamanhoImg{
+
+        width: 250px;
+    
+    }
+
+}
+.rosa{
+
+    font-size: 25px;
+    color: white;
+}
+.nome{
+
+    font-size: 30px;
+    color: rgb(155, 136, 243);
+}
+.administracao{
+    font-size: 25px;
+    position: right;
+    top: 5px;
+    left: 9px;
+}
+/* Estilo geral */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #f35555;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #555;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  color: #ece7e7;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #e3e3e3;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  height: 40px;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo específico */
+.alert {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.fundo {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.rosa {
+  color: #ff0066;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+#total {
+  color: #ff0066;
+  font-size: 24px;
+  margin-top: 20px;
+}
+form {
+  padding-bottom: 20px;
+}
+
+input[type="email"] {
+  font-size: 0.9em;
+  max-width: 275px;
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+}
+
+input[type="submit"] {
+  font-size: 0.9em;
+  max-width: 150px;
+  width: 100%;
+  height: 40px;
+  margin: 15px 0;
+  border: 0;
+  border-radius: 5px;
+  background-color: #391D34;
+  color: white;
+}
+
+input[type="submit"]:hover {
+  background-color: #391D34;
+  transition: background-color 1s;
+}

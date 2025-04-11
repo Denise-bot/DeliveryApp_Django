@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block 'conteudo' %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="card shadow p-4" style="width: 100%; max-width: 450px;">
+    <h3 class="text-center mb-4">Criar Conta</h3>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST" action="{% url 'cadastro' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Usuário</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Nome de usuário" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="email@exemplo.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password1">Senha</label>
+        <input type="password" class="form-control" id="password1" name="password1" placeholder="Digite sua senha" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password2">Confirmar senha</label>
+        <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirme a senha" required>
+      </div>
+
+      <button type="submit" class="btn btn-success btn-block mt-3">Cadastrar</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <small>Já tem uma conta? <a href="{% url 'login' %}">Faça login</a></small>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width: 600px; margin: auto; padding: 20px;">
+    <h2>Perfil do Usuário</h2>
+    <hr>
+    <p><strong>Nome:</strong> {{ usuario.get_full_name }}</p>
+    <p><strong>Usuário:</strong> {{ usuario.username }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+    <p><strong>Data de cadastro:</strong> {{ usuario.date_joined|date:"d/m/Y H:i" }}</p>
+
+    <a href="{% url 'logout' %}" class="btn btn-danger">Sair</a>
+</div>
+{% endblock %}
