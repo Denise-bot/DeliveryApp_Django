@@ -1,54 +1,82 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block extra_css %}
+  <style>
+    #carouselPromocoes .carousel-item {
+      height: 125px !important; /* Ajuste a altura para metade do tamanho */
+    }
+
+    #carouselPromocoes .carousel-item img {
+      object-fit: cover !important; /* Faz a imagem se ajustar ao tamanho da caixa sem distorcer */
+      height: 100% !important;
+    }
+  </style>
+{% endblock %}
+
+
+  
 {% block 'conteudo' %}
 
-<div class="container mt-4">
-
-  <!-- Banner -->
-  <div class="jumbotron text-white" style="background: linear-gradient(135deg, #ff4e50, #f9d423);">
-    <h1 class="display-4">Bem-vindo ao Delivery!</h1>
-    <p class="lead">Os melhores pratos da cidade entregues rapidinho na sua porta.</p>
-    <hr class="my-4">
-    <a class="btn btn-light btn-lg" href="{% url 'ver_carrinho' %}" role="button">Ver meu carrinho</a>
+<div id="carouselPromocoes" class="carousel slide mb-4" data-ride="carousel">
+    <div class="carousel-inner">
+      {% for produto in promocoes %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <img src="{{ produto.img.url }}" class="d-block w-100 img-fluid custom-carousel-img" alt="{{ produto.nome_produto }}">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ produto.nome_produto }}</h5>
+            <p>R$ {{ produto.preco }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#carouselPromocoes" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselPromocoes" role="button" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
   </div>
+  
+  
+  
 
-  <!-- Categorias -->
-  <h2 class="mb-4">Categorias em destaque</h2>
+<!-- Produtos mais vendidos -->
+<div class="container">
+  <h3 class="mb-4">Mais Vendidos</h3>
   <div class="row">
-    {% for categoria in categorias %}
-    <div class="col-md-4 mb-3">
-      <div class="card h-100 text-center">
-        <img src="{{ categoria.imagem.url }}" class="card-img-top" alt="{{ categoria.nome }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ categoria.nome }}</h5>
-          <a href="{% url 'categoria' categoria.id %}" class="btn btn-primary">Ver produtos</a>
+    {% for produto in mais_vendidos %}
+      <div class="col-md-3">
+        <div class="card mb-4">
+          <img src="{{ produto.img.url }}" class="card-img-top" alt="{{ produto.nome_produto }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ produto.nome_produto }}</h5>
+            <p class="card-text">R$ {{ produto.preco }}</p>
+            <a href="{% url 'produto' produto.id %}" class="btn btn-primary">Adicionar ao carrinho</a>
+          </div>
         </div>
       </div>
-    </div>
-    {% empty %}
-      <p>Sem categorias disponíveis no momento.</p>
     {% endfor %}
   </div>
+</div>
 
-  <!-- Produtos em destaque -->
-  <h2 class="mt-5 mb-4">Mais pedidos</h2>
+<!-- Resto dos produtos normais -->
+<div class="container mt-5">
+  <h3>Todos os Produtos</h3>
   <div class="row">
-    {% for produto in produtos_destaque %}
-    <div class="col-md-3 mb-4">
-      <div class="card h-100">
-        <img src="{{ produto.imagem.url }}" class="card-img-top" alt="{{ produto.nome }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ produto.nome }}</h5>
-          <p class="card-text">R$ {{ produto.preco }}</p>
-          <a href="{% url 'ver_produto' produto.id %}" class="btn btn-success btn-block">Ver detalhes</a>
+    {% for produto in produtos %}
+      <div class="col-md-3">
+        <div class="card mb-4">
+          <img src="{{ produto.img.url }}" class="card-img-top" alt="{{ produto.nome_produto }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ produto.nome_produto }}</h5>
+            <p class="card-text">R$ {{ produto.preco }}</p>
+            <a href="{% url 'produto' produto.id %}" class="btn btn-outline-success">Ver produto</a>
+          </div>
         </div>
       </div>
-    </div>
-    {% empty %}
-      <p>Não há produtos em destaque no momento.</p>
     {% endfor %}
   </div>
-
 </div>
 
 {% endblock %}

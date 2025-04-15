@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from .models import Produto, Categoria, Adicional, Opcoes  # Import the Produto, Categoria, Adicional, and Opcoes models
 from django.contrib.auth.decorators import login_required
@@ -9,12 +10,21 @@ def home(request):
     if not request.session.get('carrinho'):
         request.session['carrinho'] = []
         request.session.save()
+
     produtos = Produto.objects.all()
     categorias = Categoria.objects.all()
-    return render(request, 'home.html', {'produtos': produtos,
-                                        'carrinho': len(request.session['carrinho']),
-                                        'categorias': categorias,
-                                        })
+
+    # Simulação: os 4 primeiros como mais vendidos e promoções
+    mais_vendidos = Produto.objects.filter(ativo=True)[:4]
+    promocoes = Produto.objects.filter(ativo=True).order_by('-id')[:3]
+
+    return render(request, 'home.html', {
+        'produtos': produtos,
+        'carrinho': len(request.session['carrinho']),
+        'categorias': categorias,
+        'mais_vendidos': mais_vendidos,
+        'promocoes': promocoes,
+    })
 
 def categorias(request, id):
     produtos = Produto.objects.filter(categoria_id = id)
@@ -66,7 +76,7 @@ def add_carrinho(request):
                 encontrou = True
                 if len(j[1]) < minimo or len(j[1]) > maximo:
                     aprovado = False
-        if minimo > 0 and encontrou == False:
+        if minimo > 0 and not encontrou:
             aprovado = False
     
     if not aprovado:
@@ -98,7 +108,7 @@ def add_carrinho(request):
 
     request.session['carrinho'].append(data)
     request.session.save()
-    return redirect(f'/ver_carrinho')
+    return redirect('/ver_carrinho')
 
 def ver_carrinho(request):
     categorias = Categoria.objects.all()
@@ -140,8 +150,6 @@ def login_view(request):
     
     return render(request, 'login.html')
 
-
-from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
 def cadastro_view(request):
@@ -174,3 +182,5 @@ def cadastro_view(request):
 @login_required
 def perfil_view(request):
     return render(request, 'produto/perfil.html')
+
+
