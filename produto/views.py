@@ -150,32 +150,29 @@ def login_view(request):
     
     return render(request, 'login.html')
 
-from django.contrib.auth.decorators import login_required
-
 def cadastro_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
+    username = request.POST.get('username')
+    email = request.POST.get('email')
+    password1 = request.POST.get('password1')
+    password2 = request.POST.get('password2')
 
-        if password1 != password2:
-            messages.error(request, 'As senhas não coincidem.')
-            return redirect('cadastro')
+    if password1 != password2:
+        messages.error(request, 'As senhas não coincidem.')
+        return redirect('cadastro')
 
-        if User.objects.filter(username=username).exists():
-            messages.error(request, 'Usuário já existe.')
-            return redirect('cadastro')
+    if User.objects.filter(username=username).exists():
+        messages.error(request, 'Usuário já existe.')
+        return redirect('cadastro')
 
-        if User.objects.filter(email=email).exists():
-            messages.error(request, 'E-mail já está em uso.')
-            return redirect('cadastro')
+    if User.objects.filter(email=email).exists():
+        messages.error(request, 'E-mail já está em uso.')
+        return redirect('cadastro')
 
-        user = User.objects.create_user(username=username, email=email, password=password1)
-        user.save()
-        login(request, user)  # <- loga automaticamente após cadastro
-        return redirect('perfil')  # <- redireciona para o perfil
-    
+    user = User.objects.create_user(username=username, email=email, password=password1)
+    user.save()
+    login(request, user)  # <- loga automaticamente após cadastro
+    return redirect('perfil')  # <- redireciona para o perfil
+
     return render(request, 'cadastro.html')
 
 

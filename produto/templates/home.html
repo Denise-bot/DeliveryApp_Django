@@ -1,21 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-  <style>
-    #carouselPromocoes .carousel-item {
-      height: 125px !important; /* Ajuste a altura para metade do tamanho */
-    }
-
-    #carouselPromocoes .carousel-item img {
-      object-fit: cover !important; /* Faz a imagem se ajustar ao tamanho da caixa sem distorcer */
-      height: 100% !important;
-    }
-  </style>
-{% endblock %}
-
-
-  
 {% block 'conteudo' %}
 
 <div id="carouselPromocoes" class="carousel slide mb-4" data-ride="carousel">
