@@ -1,34 +1,35 @@
 # 🛵 Delivery - Sistema de Pedidos Online
 
-Este é um projeto de código aberto desenvolvido como parte do curso Técnico em Desenvolvimento de Sistemas do [Senac](https://github.com/SENAC-DF-CEPs), instruído pela Profª Maristela. O sistema simula um serviço de delivery, com foco na prática de desenvolvimento web utilizando Django.
+Projeto de código aberto desenvolvido como parte do curso Técnico em Desenvolvimento de Sistemas no Senac, sob orientação da Profª Maristela.  
+O sistema simula um serviço de delivery, com foco na prática de desenvolvimento web utilizando o framework **Django**.
 
 ---
 
 ## 👩‍🏫 Sobre o Projeto
 
-A proposta foi apresentada pela professora do curso com o objetivo de aplicar os conhecimentos em:
+A proposta tem como objetivo a aplicação prática dos conhecimentos em:
 
-- Backend com Django
-- Frontend com HTML, CSS e Bootstrap
-- Banco de dados (SQLite)
-- Integração com painel administrativo
+- Backend com **Django**
+- Frontend com **HTML**, **CSS** e **Bootstrap**
+- Banco de dados com **SQLite**
+- Integração com **painel administrativo**
 
-Este projeto tem fins didáticos, mas pode ser expandido para se tornar um sistema funcional de delivery.
+Embora criado com fins didáticos, o projeto tem potencial para expansão como um sistema real de delivery.
 
 ---
 
 ## 🚀 Funcionalidades
 
-- Autenticação de usuários (login, logout)
+- Autenticação de usuários (login e logout)
 - Cadastro e gerenciamento de produtos, categorias, adicionais e opções
 - Visualização de produtos com imagem, descrição e ingredientes
 - Sistema de carrinho de compras
-- Interface responsiva com Bootstrap
-- Painel administrativo completo com Django Admin
+- Interface responsiva com **Bootstrap**
+- Painel administrativo completo com **Django Admin**
 
 ---
 
-## 💻 Tecnologias
+## 💻 Tecnologias Utilizadas
 
 - Python 3.12
 - Django
@@ -38,17 +39,20 @@ Este projeto tem fins didáticos, mas pode ser expandido para se tornar um siste
 
 ---
 
+
 ## 📦 Como rodar o projeto
 
 1. Clone o repositório:
 
-   git clone https://github.com/seu_usuario/seu_repositorio.git
-   cd seu_repositorio
+git clone https://github.com/Denise-bot/Tutorial_Delivery.git
+cd Tutorial_Delivery
 
 2. Crie e ative um ambiente virtual:
 
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts\activate  # Windows
+# ou
+source venv/bin/activate  # Linux/Mac
 
 3. Instale as dependências:
 
